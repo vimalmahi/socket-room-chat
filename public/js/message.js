@@ -6,8 +6,8 @@ Message = function (arg) {
             var $message;
             $message = $($('#chat_wrapper .message_template').clone().html());
             $message.addClass(_this.message_side).find('.text').html(_this.text);
-            $message.find('.sender').html(_this.from+' ['+this.time+']');
-            $('.chat_window#'+this.room+' .messages').append($message);
+            $message.find('.sender').html(_this.from+' ['+_this.time+']');
+            $('.chat_window#'+_this.room+' .messages').append($message);
             return setTimeout(function () {
                 return $message.addClass('appeared');
             }, 0);

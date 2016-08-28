@@ -1,14 +1,15 @@
+'use strict';
 
 var loggedInUser;
 var roomName;
 var counter = 0;
-
+var $chat_window;
 
 $(function(){
 	var timeInterval;
 	$("#chatSection").hide();
 	var socket = io.connect('http://localhost:3000/');
-
+	var roomName = $(".roomSelect:visible").find(":selected").text();
 	$('#loginSelectBtn').click(function(event){
 		loggedInUser = $("#userSelect").find(":selected").text();
 		socket.emit('userJoin', {
@@ -19,7 +20,7 @@ $(function(){
 	});
 
 	$("#chatSelectBtn").click(function(event){
-		roomName = $(".roomSelect:visible").find(":selected").text();
+		var roomName = $(".roomSelect:visible").find(":selected").text();
 		socket.emit('userJoin', {
 			userName:loggedInUser,
 			roomName:roomName,
@@ -35,6 +36,7 @@ $(function(){
 			$('.chat_window#'+roomName+' .title').eq(0).html(roomName);
 
 			$('.chat_window#'+roomName+' .send_message').click(function(){
+				console.log('.chat_window#' +roomName+ ' .message_input --- HELLO');
 				socket.emit('sendChatMsg', {
 					roomName:roomName,
 					from:loggedInUser,
@@ -50,9 +52,6 @@ $(function(){
 			});
 		}
 		
-
-
-
 		var users = $("#userChatSelect").find(":selected");
 		var chatWith = users.map(function() { 
                                        return this.value; 
@@ -92,7 +91,7 @@ $(function(){
 		$("#loginSection").hide('slow');
 
 		$("#chatSection").show();
-		$(".roomSelect option:contains("+roomName+")").prop("selected", true);
+		$(".roomSelect option:contains("+data.roomName+")").prop("selected", true);
 
 		$("#userChatSelect option[value='"+data.userName+"']").hide();
 
@@ -120,39 +119,34 @@ $(function(){
 				socket.emit('sendChatMsg', {
 					roomName:data.roomName,
 					from:loggedInUser,
-					msg: $('.chat_window#' +data.roomName+ '.message_input').eq(0).val()
+					msg: $('.chat_window#' +data.roomName+ ' .message_input').eq(0).val()
 				});	
 			});
 
 			$('.chat_window#'+data.roomName+' .message_input').keyup(function(e){
 			    if(e.keyCode == 13)
 			    {
-			        $('.chat_window#'+data.roomName+" .send_message").trigger("click");
+			        $('.chat_window#'+data.roomName+' .send_message').trigger("click");
 			    }
 			});	
 
 		}
-			
-			
-		
 		
 		sendMessage (data.from, data.msg, time, data.roomName);
 	});
 
-	var getMessageText, message_side, sendMessage;
+	var message_side;
+	var sendMessage;
     var message_side = 'right';
-    var getMessageText = function () {
-        var $message_input;
-        $message_input = $('.message_input');
-        return $message_input.val();
-    };
+
+
 	var sendMessage = function (username, text, time, room) {
         var $messages, message;
         if (text.trim() === '') {
             return;
         }
-        $('.message_input').val('');
-        $messages = $('.messages');
+        $('.chat_window#'+room+' .message_input').val('');
+        $messages = $('.chat_window#'+room+' .messages');
         message_side = username == loggedInUser ? 'left' : 'right';
         message = new Message({
             text: text,
@@ -164,13 +158,6 @@ $(function(){
         message.draw();
         return $messages.animate({ scrollTop: $messages.prop('scrollHeight') }, 0);
     };
-
-
-	
-
-
-	
-
 
 });
 
