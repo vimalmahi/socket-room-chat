@@ -1,0 +1,86 @@
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="./css/main.css">
+	<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
+</head>
+	<body>
+		
+
+<div class="content">
+	<div id="loggedInMsg"></div>
+	<div id="loginSection" class="top_menu" style="width:30%">
+		<label>Select User: 
+			<select id="userSelect">
+				<option selected="selected">KK</option>
+				<option>Nimisha</option>
+				<option>Augustine</option>
+			</select>
+		</label>
+		<br/>
+		<label>Select Room: 
+			<select id="roomSelect">
+				<option selected="selected">Room-1</option>
+				<option>Room-2</option>
+				<option>Room-3</option>
+			</select>
+		</label>
+		<br/>
+		<button id="loginSelectBtn">Connect to Room</button>
+		<button id="socketSelectBtn">Connect to Socket</button>
+	</div>
+
+	<div id="chatSection" class="top_menu">
+		<label>Select User(s) to chat: 
+			<select id="userChatSelect" multiple="multiple">
+				<option value="KK">KK</option>
+				<option value="Nimisha">Nimisha</option>
+				<option value="Augustine">Augustine</option>
+			</select>
+		</label>
+		<br/>
+		<button id="chatSelectBtn">Start Chat</button>
+	</div>
+
+</div>
+
+<div id="chat_area">
+
+</div>
+
+<div id="chat_wrapper" class="hide">
+	<div class="chat_window">
+	   <div class="top_menu">
+	      <div class="buttons">
+	         <div class="button close" onclick="$(this).closest('.chat_window').remove()"></div>
+	         
+	      </div>
+	      <div class="title">Chat</div>
+	   </div>
+	   <ul class="messages"></ul>
+	   <div class="bottom_wrapper clearfix">
+	      <div class="message_input_wrapper"><input class="message_input" placeholder="Type your message here..." /></div>
+	      <div class="send_message">
+	         <div class="text">Send</div>
+	      </div>
+	   </div>
+	</div>
+	<div class="message_template">
+	   <li class="message">
+	      
+	      <div class="text_wrapper">
+	  		 <div class="sender"></div>
+	         <div class="text"></div>
+	      </div>
+	   </li>
+	</div>
+</div>	
+
+	<script src="./js/message.js"></script>
+	<script src="./js/lib.js"></script>
+
+</body>
+
+</html>
