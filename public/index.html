@@ -19,15 +19,7 @@
 				<option>Augustine</option>
 			</select>
 		</label>
-		<br/>
-		<label>Select Room: 
-			<select id="roomSelect">
-				<option selected="selected">Room-1</option>
-				<option>Room-2</option>
-				<option>Room-3</option>
-			</select>
-		</label>
-		<br/>
+		<br/><br/>
 		<button id="loginSelectBtn">Connect to Room</button>
 		<button id="socketSelectBtn">Connect to Socket</button>
 	</div>
@@ -38,6 +30,14 @@
 				<option value="KK">KK</option>
 				<option value="Nimisha">Nimisha</option>
 				<option value="Augustine">Augustine</option>
+			</select>
+		</label>
+		<br/>
+		<label>Select Room: 
+			<select class="roomSelect">
+				<option selected="selected">Room-1</option>
+				<option>Room-2</option>
+				<option>Room-3</option>
 			</select>
 		</label>
 		<br/>
@@ -61,7 +61,7 @@
 	   </div>
 	   <ul class="messages"></ul>
 	   <div class="bottom_wrapper clearfix">
-	      <div class="message_input_wrapper"><input class="message_input" placeholder="Type your message here..." /></div>
+	      <div class="message_input_wrapper"><input class="message_input" placeholder="type here..." /></div>
 	      <div class="send_message">
 	         <div class="text">Send</div>
 	      </div>

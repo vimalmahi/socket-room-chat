@@ -16,15 +16,13 @@ label{
 	padding: 10px
 }
 .chat_window {
-  position: relative;
+  position: absolute;
   width: calc(100% - 20px);
   max-width: 300px;
   height: 400px;
   border-radius: 10px;
   background-color: #fff;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
+/*  transform: translateX(-50%) translateY(-50%);*/
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   background-color: #f8f8f8;
   overflow: scroll;
