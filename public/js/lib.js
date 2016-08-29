@@ -91,8 +91,6 @@ $(function(){
 		$("#loginSection").hide('slow');
 
 		$("#chatSection").show();
-		$(".roomSelect option:contains("+data.roomName+")").prop("selected", true);
-
 		$("#userChatSelect option[value='"+data.userName+"']").hide();
 
 		if (typeof timeInterval === 'undefined') {

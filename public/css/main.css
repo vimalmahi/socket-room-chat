@@ -25,11 +25,11 @@ label{
 /*  transform: translateX(-50%) translateY(-50%);*/
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   background-color: #f8f8f8;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 .top_menu {
-  background-color: #fff;
+  background-color: #565c3f;
   width: 100%;
   padding: 20px 0 15px;
   box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
